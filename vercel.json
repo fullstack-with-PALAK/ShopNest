@@ -11,7 +11,8 @@
     { "source": "/cart", "destination": "/api" },
     { "source": "/cart/(.*)", "destination": "/api" },
     { "source": "/reviews", "destination": "/api" },
-    { "source": "/searchProducts", "destination": "/api" }
+    { "source": "/searchProducts", "destination": "/api" },
+    { "source": "/product/(.*)", "destination": "/api" }
   ],
   "functions": {
     "api/index.js": {

@@ -1,8 +1,14 @@
 const bcrypt = require('bcrypt');
 const User = require('../schemas/users');
 const { generateToken } = require('./jwts');
+const { isDemoMode } = require('../mockData');
 
 const signup = async (req, res) => {
+    // Disable signup in demo mode
+    if (isDemoMode()) {
+        return res.status(200).json(['Demo Mode', 'Registration disabled in demo mode']);
+    }
+    
     const salt = 10;
     const { name, email, role, password } = req.body;
     
@@ -30,6 +36,11 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
+    // Disable login in demo mode
+    if (isDemoMode()) {
+        return res.status(200).json(['Demo Mode', 'Login disabled in demo mode. Browse products freely!']);
+    }
+    
     try {
         const user = await User.findOne({ email: req.body.email });
         

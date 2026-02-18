@@ -1,7 +1,13 @@
 const Cart = require('../schemas/cart');
+const { isDemoMode } = require('../mockData');
 
 const addToCart = async (req, res) => {
     try {
+        // In demo mode, just return success (cart won't persist)
+        if (isDemoMode()) {
+            return res.status(200).json(['Demo Mode', 'Cart functionality disabled in demo']);
+        }
+        
         const { cartItem } = req.body;
         const userName = req.user.name;
         
