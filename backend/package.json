@@ -3,5 +3,16 @@
     "version": "1.0.0",
     "description": "ShopNest backend API server",
     "main": "server.js",
-    "author": "fullstack-with-PALAK"
+    "author": "fullstack-with-PALAK",
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "dependencies": {
+        "express": "^4.17.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
 }
