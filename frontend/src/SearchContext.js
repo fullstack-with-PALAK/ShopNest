@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from 'react';
 
-const SearchContext = createContext();
+export const SearchContext = createContext();
 
 export function SearchProvider({ children }) {
     const [searchResults, setSearchResults] = useState([]);
@@ -23,7 +23,7 @@ export function SearchProvider({ children }) {
     };
 
     return (
-        <SearchContext.Provider value={{ searchResults, searchQuery, search, setSearchResults }}>
+        <SearchContext.Provider value={{ searchResults, searchQuery, search, setSearchResults, res: searchResults }}>
             {children}
         </SearchContext.Provider>
     );
