@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require('../schemas/users');
 const { generateToken } = require('./jwts');
 const { isDemoMode } = require('../mockData');
