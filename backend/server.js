@@ -119,7 +119,7 @@ app.get('/reviews', async (req, res) => {
 });
 
 // Single product route
-app.get('/:id', async (req, res) => {
+app.get('/api/product/:id', async (req, res) => {
     await showProduct(req, res);
 });
 

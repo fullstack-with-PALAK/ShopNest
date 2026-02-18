@@ -22,7 +22,7 @@ export default function ProductInfo() {
 
     const fetchProduct = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/${id}`);
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/product/${id}`);
             const data = await response.json();
             setProduct(data);
         } catch (error) {
