@@ -1,0 +1,7 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "ShopNest backend API server",
+    "main": "server.js",
+    "author": "fullstack-with-PALAK"
+}
