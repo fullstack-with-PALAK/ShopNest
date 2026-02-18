@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/signup", "destination": "/api" },
+    { "source": "/login", "destination": "/api" },
+    { "source": "/products", "destination": "/api" },
+    { "source": "/products/(.*)", "destination": "/api" },
+    { "source": "/cart", "destination": "/api" },
+    { "source": "/cart/(.*)", "destination": "/api" },
+    { "source": "/reviews", "destination": "/api" },
+    { "source": "/searchProducts", "destination": "/api" },
+    { "source": "/images/(.*)", "destination": "/api" }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "backend/**"
+    }
+  }
+}

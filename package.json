@@ -3,5 +3,12 @@
     "version": "1.0.0",
     "description": "An E-Commerce Website built with MERN stack",
     "author": "fullstack-with-PALAK",
-    "license": "MIT"
+    "license": "MIT",
+    "scripts": {
+        "build": "cd frontend && npm install && npm run build",
+        "vercel-build": "cd backend && npm install && cd ../frontend && npm install && npm run build"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
 }
