@@ -1,4 +1,4 @@
 // Simple test endpoint
-export default function handler(req, res) {
-    res.json({ message: 'Test endpoint working!', time: new Date().toISOString() });
-}
+module.exports = function(req, res) {
+    res.status(200).json({ message: 'Test endpoint working!', time: new Date().toISOString() });
+};
