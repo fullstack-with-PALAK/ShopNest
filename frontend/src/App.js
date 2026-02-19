@@ -11,7 +11,8 @@ import AlertWrapper from './Components/AlertWrapper';
 
 export default function App() {
     return (
-        <AlertWrapper>
+        <>
+            <AlertWrapper />
             <div className="overflow-y-hidden h-screen">
                 {/* Navigation Bar */}
                 <nav className="sticky top-0 z-50 h-16 px-5 w-full bg-black text-white flex items-center justify-around">
@@ -51,6 +52,6 @@ export default function App() {
                     </Routes>
                 </div>
             </div>
-        </AlertWrapper>
+        </>
     );
 }
