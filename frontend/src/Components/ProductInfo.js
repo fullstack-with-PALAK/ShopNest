@@ -2,6 +2,18 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useAlert } from '../AlertContext';
 
+// Demo products for static deployment
+const demoProducts = [
+    { _id: '1', name: 'Wireless Bluetooth Headphones', description: 'Premium quality wireless headphones with noise cancellation, 30-hour battery life.', price: 79.99, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
+    { _id: '2', name: 'Classic Leather Wallet', description: 'Genuine leather bifold wallet with multiple card slots and RFID blocking.', price: 34.99, image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?w=400' },
+    { _id: '3', name: 'Smart Fitness Watch', description: 'Track your health with heart rate monitor, step counter, and sleep tracking.', price: 149.99, image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400' },
+    { _id: '4', name: 'Organic Coffee Beans', description: 'Premium arabica coffee beans from Colombia. Rich, smooth flavor.', price: 18.99, image: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400' },
+    { _id: '5', name: 'Minimalist Backpack', description: 'Water-resistant backpack with laptop compartment for work or travel.', price: 59.99, image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400' },
+    { _id: '6', name: 'Stainless Steel Water Bottle', description: 'Eco-friendly insulated bottle keeps drinks cold 24hrs or hot 12hrs.', price: 24.99, image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=400' },
+    { _id: '7', name: 'Wireless Phone Charger', description: 'Fast wireless charging pad compatible with all Qi-enabled devices.', price: 29.99, image: 'https://images.unsplash.com/photo-1586816879360-004f5b0c51e3?w=400' },
+    { _id: '8', name: 'Essential Oils Set', description: 'Set of 6 pure essential oils: lavender, eucalyptus, peppermint, tea tree, lemon, orange.', price: 22.99, image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=400' }
+];
+
 export default function ProductInfo() {
     const { id } = useParams();
     const { showAlert } = useAlert();
@@ -23,20 +35,25 @@ export default function ProductInfo() {
     const fetchProduct = async () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/product/${id}`);
+            if (!response.ok) throw new Error('API error');
             const data = await response.json();
             setProduct(data);
         } catch (error) {
-            console.log(error);
+            console.log('Using demo product:', error);
+            const demoProduct = demoProducts.find(p => p._id === id) || demoProducts[0];
+            setProduct(demoProduct);
         }
     };
 
     const fetchReviews = async () => {
         try {
             const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/reviews?productId=${product._id}`);
+            if (!response.ok) throw new Error('API error');
             const data = await response.json();
             setComments(data);
         } catch (error) {
-            console.log(error);
+            console.log('Demo mode - no reviews');
+            setComments([]);
         }
     };
 
@@ -58,8 +75,7 @@ export default function ProductInfo() {
             const data = await response.json();
             showAlert(data[0], data[1]);
         } catch (error) {
-            showAlert('Error', 'Failed to add to cart');
-            console.log(error);
+            showAlert('Demo Mode', 'Cart feature disabled in demo');
         }
     };
 
@@ -87,8 +103,7 @@ export default function ProductInfo() {
                 fetchReviews();
             }
         } catch (error) {
-            showAlert('Error', 'Failed to submit review');
-            console.log(error);
+            showAlert('Demo Mode', 'Reviews disabled in demo');
         }
     };
 
