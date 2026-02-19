@@ -4,14 +4,15 @@
   "buildCommand": "",
   "outputDirectory": "public",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/products", "destination": "/api/products" },
     { "source": "/signup", "destination": "/api" },
     { "source": "/login", "destination": "/api" },
-    { "source": "/products", "destination": "/api" },
     { "source": "/cart", "destination": "/api" },
     { "source": "/cart/(.*)", "destination": "/api" },
     { "source": "/reviews", "destination": "/api" },
-    { "source": "/searchProducts", "destination": "/api" }
+    { "source": "/searchProducts", "destination": "/api" },
+    { "source": "/api/health", "destination": "/api" },
+    { "source": "/api/product/(.*)", "destination": "/api" }
   ],
   "functions": {
     "api/index.js": {
